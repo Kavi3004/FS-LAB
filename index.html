@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      width: 400px;
+      transform: scale(0.8);
+      opacity: 0;
+      animation: formAppear 1s forwards;
+    }
+
+    @keyframes formAppear {
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #0cf4dd;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+      width: auto;
+      margin-right: 5px;
+    }
+
+    button {
+      background: #eaed06;
+      color: white;
+      padding: 10px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff1010;
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+  <form id="registrationForm" action="http://localhost:3000/submit" method="POST" enctype="multipart/form-data">
+    <h2>Student Registration</h2>
+
+    <label>Full Name:</label>
+    <input type="text" name="fullname" required>
+
+    <label>Email:</label>
+    <input type="email" name="email" required>
+
+    <label>Password:</label>
+    <input type="password" name="password" required minlength="6">
+
+    <label>Phone Number:</label>
+    <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+
+    <label>Date of Birth:</label>
+    <input type="date" name="dob" required>
+
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="Male" required> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Other"> Other
+
+    <label>Course:</label>
+    <select name="course" required>
+      <option value="">Select</option>
+      <option value="B.Tech">B.Tech</option>
+      <option value="B.Sc">B.Sc</option>
+      <option value="MBA">MBA</option>
+    </select>
+
+    <label>Branch:</label>
+    <select name="branch" required>
+      <option value="">Select</option>
+      <option value="CSE">Computer Science</option>
+      <option value="ECE">Electronics</option>
+      <option value="EEE">Electrical</option>
+      <option value="MECH">Mechanical</option>
+      <option value="CIVIL">Civil</option>
+    </select>
+
+    <label>Section:</label>
+    <select name="section" required>
+      <option value="">Select</option>
+      <option value="A">Section A</option>
+      <option value="B">Section B</option>
+      <option value="C">Section C</option>
+      <option value="D">Section D</option>
+    </select>
+
+    <label>Hobbies:</label>
+    <input type="checkbox" name="hobbies" value="Reading"> Reading
+    <input type="checkbox" name="hobbies" value="Sports"> Sports
+    <input type="checkbox" name="hobbies" value="Music"> Music
+
+    <label>Upload Photo:</label>
+    <input type="file" name="photo" accept="image/*">
+
+    <label>Address:</label>
+    <textarea name="address" rows="3" required></textarea>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script src="validate.js"></script>
+</body>
+</html>
